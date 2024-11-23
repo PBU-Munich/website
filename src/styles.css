@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black; /* Setzt den Hintergrund auf schwarz */
+  color: darkgreen; /* Setzt die Schriftfarbe auf weiß, damit der Text lesbar ist */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

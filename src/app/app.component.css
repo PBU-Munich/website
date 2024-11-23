@@ -1,0 +1,168 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: darkgreen;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Profile Section */
+.profile-section {
+  margin-bottom: 40px;
+}
+
+.profile-picture {
+  border: 5px solid darkgreen;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.custom-button {
+  padding: 10px 20px;
+  border: 2px solid darkgreen;
+  background-color: transparent;
+  color: darkgreen;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: darkgreen;
+  color: black;
+}
+
+/* Calendar Section */
+.events-header {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Abstand zwischen dem Text und dem Icon */
+  justify-content: center;
+}
+
+.events-link-text {
+  text-decoration: none;
+  color: inherit; /* Übernimmt die Farbe von `h2` */
+  font-weight: bold; /* Optional: Schalt den Text fett dar, damit er mehr hervorsticht */
+}
+
+.download-icon-link {
+  text-decoration: none;
+  color: inherit; /* Übernimmt die Farbe von `h2` */
+  display: flex;
+  align-items: center;
+}
+
+.download-icon-link mat-icon {
+  font-size: 24px; /* Icon-Größe anpassen */
+}
+
+.events-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.event-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Karten umbrechen, falls kein Platz */
+  gap: 15px; /* Reduzierter Abstand zwischen den Karten für kompakteres Layout */
+  justify-content: center; /* Karten zentrieren */
+}
+
+.event-card {
+  height: 100%;
+  width: 100%;
+  border: 4px solid darkgreen;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+.event-card img {
+  width: 100%; /* Das Bild füllt die Kartenbreite aus */
+  height: auto; /* Beibehaltung des Seitenverhältnisses */
+  border-radius: 10px 10px 0 0; /* Gleiche Abrundung wie die Karte */
+}
+.event-card-link {
+  text-decoration: underline;
+  color: inherit;
+  display: inline-block; /* Dadurch wird verhindert, dass das Link-Tag den gesamten Bildschirm einnimmt */
+  max-width: calc(30% - 15px); /* Breite der Karten leicht reduziert */
+  flex: 1 1 calc(30% - 15px); /* Kleinere Karten, nehmen weniger Platz ein */
+}
+
+/* Schriftgröße und Bildgröße anpassen für kleinere Bildschirme */
+@media screen and (max-width: 768px) {
+  .event-card-link {
+    flex: 1 1 calc(45% - 10px); /* Karten werden kleiner, um zwei pro Reihe zu ermöglichen */
+    max-width: calc(45% - 10px);
+  }
+
+  .event-card {
+    font-size: 0.9rem; /* Schriftgröße leicht reduzieren */
+  }
+  mat-card-title {
+    font-size: 1.1rem; /* Schriftgröße für Card-Titel weiter reduzieren */
+  }
+  .event-card img {
+    max-height: 180px;
+    object-fit: cover;
+  }
+}
+
+/* Sehr kleine Bildschirme: Karten untereinander und kleiner darstellen */
+@media screen and (max-width: 480px) {
+  .event-card-link {
+    flex: 1 1 calc(90% - 10px); /* Karten nehmen weniger Platz ein, um kompakter zu wirken */
+    max-width: calc(90% - 10px);
+    margin-bottom: 10px; /* Abstand unten zwischen den Karten */
+  }
+
+  .event-card {
+    font-size: 0.8rem !important; /* Schriftgröße weiter reduzieren */
+  }
+  mat-card-title {
+    font-size: 1rem; /* Schriftgröße für Card-Titel weiter reduzieren */
+  }
+  .event-card img {
+    max-height: 120px;
+    object-fit: cover;
+  }
+}
+
+footer {
+  background-color: black;
+  text-align: center;
+  padding: 0 0 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer nav a {
+  color: darkgreen;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+footer nav a:hover {
+  text-decoration: none;
+}
+
