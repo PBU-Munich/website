@@ -3,7 +3,6 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: black;
-  color: darkgreen;
   text-align: center;
 }
 
@@ -19,9 +18,38 @@ body {
   margin-bottom: 40px;
 }
 
+.profile-picture-section {
+  display: flex;
+  align-items: center;
+  color: whitesmoke;
+  justify-content: center;
+}
+
+.profile-text {
+  text-align: left;
+  margin-left: 20px;
+  height: 160px;
+  width: 150px;
+  h2 {
+    margin-top: 25%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .profile-text {
+    margin-top: -5%;
+  }
+}
+@media screen and (max-width: 311px) {
+  .profile-text {
+    display: none;
+  }
+}
+.profile-subtext {
+  padding: 0 10px;
+}
+
 .profile-picture {
-  border: 5px solid darkgreen;
-  border-radius: 50%;
   width: 150px;
   height: 150px;
 }
@@ -31,21 +59,62 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+
 }
 
 .custom-button {
+  font-weight: bold;
   padding: 10px 20px;
-  border: 2px solid darkgreen;
+  border: 2px solid #02C3A6;
   background-color: transparent;
-  color: darkgreen;
+  color: #02C3A6;
   font-size: 16px;
   border-radius: 10px;
   cursor: pointer;
+  display: block;
+}
+
+@media screen and (min-width: 1000px) {
+  .custom-button {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .custom-button:hover {
-  background-color: darkgreen;
+  background-color: #02C3A6;
   color: black;
+}
+.social-icons {
+  display: flex;
+  justify-content: center; /* Zentriert die Icons horizontal */
+  gap: 30px; /* Abstand zwischen den Icons erhöhen */
+  margin-top: 15px; /* Etwas mehr Abstand zum Petition-Button */
+  text-decoration: none; /* Entfernt Unterstreichung der Links */
+}
+
+.social-icons i { /* Selektiert die Font Awesome <i>-Tags */
+  font-size: 48px; /* Größere Icons */
+  color: #02c3a6; /* Standardfarbe der Icons (Plant-Based Universities Grün) */
+  transition: color 0.3s ease-in-out; /* Sanfter Farbwechsel für Hover-Effekt */
+}
+
+/* Optional: Spezifische Farben für die Icons */
+.social-icons a:nth-child(1) i { /* Erstes Icon (Whatsapp) */
+  color: #25D366; /* Whatsapp Grün */
+}
+
+.social-icons a:nth-child(2) i { /* Zweites Icon (Instagram) */
+  color: #E4405F; /* Instagram Pink/Rot */
+}
+
+.social-icons a:nth-child(1):hover i { /* Hover für Whatsapp */
+  color: #128C7E; /* Dunkleres Whatsapp Grün */
+}
+
+.social-icons a:nth-child(2):hover i { /* Hover für Instagram */
+  color: #C13584; /* Dunkleres Instagram Pink */
 }
 
 /* Calendar Section */
@@ -80,69 +149,78 @@ body {
 }
 
 .event-cards-wrapper {
-  display: flex;
-  flex-wrap: wrap; /* Karten umbrechen, falls kein Platz */
-  gap: 15px; /* Reduzierter Abstand zwischen den Karten für kompakteres Layout */
-  justify-content: center; /* Karten zentrieren */
+  display: grid; /* Verwende CSS Grid für gleiche Höhen und Breiten */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Definiere eine Mindestbreite */
+  gap: 15px; /* Behalte den Abstand bei */
+  margin-bottom: 10px;
 }
 
 .event-card {
-  height: 100%;
-  width: 100%;
-  border: 4px solid darkgreen;
+  border: 4px solid #02C3A6;
   border-radius: 10px;
   background-color: black;
-  color: white;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Stelle sicher, dass alle Karten in einer Reihe die gleiche Höhe haben */
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
+
+.event-card mat-card-content {
+  flex-grow: 1;
+}
+
+.event-card.expanded {
+  border: 4px solid #0164a3;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-card.expanded mat-card-content {
+  overflow: visible;
+}
+
 .event-card img {
-  width: 100%; /* Das Bild füllt die Kartenbreite aus */
+  width: 100%;
   height: auto; /* Beibehaltung des Seitenverhältnisses */
-  border-radius: 10px 10px 0 0; /* Gleiche Abrundung wie die Karte */
+  object-fit: cover; /* Stellt sicher, dass das Bild den Bereich abdeckt */
+  max-height: 150px; /* Begrenze die anfängliche Höhe des Bildes */
 }
-.event-card-link {
-  text-decoration: underline;
-  color: inherit;
-  display: inline-block; /* Dadurch wird verhindert, dass das Link-Tag den gesamten Bildschirm einnimmt */
-  max-width: calc(30% - 15px); /* Breite der Karten leicht reduziert */
-  flex: 1 1 calc(30% - 15px); /* Kleinere Karten, nehmen weniger Platz ein */
-}
-
-/* Schriftgröße und Bildgröße anpassen für kleinere Bildschirme */
-@media screen and (max-width: 768px) {
-  .event-card-link {
-    flex: 1 1 calc(45% - 10px); /* Karten werden kleiner, um zwei pro Reihe zu ermöglichen */
-    max-width: calc(45% - 10px);
+/* Anpassungen für kleinere Bildschirme */
+@media screen and (max-width: 768px) and (min-width: 400px){
+  .events-container {
+    width: 70%;
   }
-
+  .event-cards-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Anpassen der Mindestbreite */
+  }
   .event-card {
-    font-size: 0.9rem; /* Schriftgröße leicht reduzieren */
+    font-size: 0.9rem;
   }
   mat-card-title {
-    font-size: 1.1rem; /* Schriftgröße für Card-Titel weiter reduzieren */
+    font-size: 1.1rem;
   }
   .event-card img {
     max-height: 180px;
-    object-fit: cover;
   }
 }
 
-/* Sehr kleine Bildschirme: Karten untereinander und kleiner darstellen */
-@media screen and (max-width: 480px) {
-  .event-card-link {
-    flex: 1 1 calc(90% - 10px); /* Karten nehmen weniger Platz ein, um kompakter zu wirken */
-    max-width: calc(90% - 10px);
-    margin-bottom: 10px; /* Abstand unten zwischen den Karten */
-  }
+@media screen and (max-width: 400px) {
 
+  .event-cards-wrapper {
+    grid-template-columns: 1fr; /* Nur eine Spalte für sehr kleine Bildschirme */
+  }
   .event-card {
-    font-size: 0.8rem !important; /* Schriftgröße weiter reduzieren */
+    font-size: 0.8rem !important;
+    margin-bottom: 10px;
   }
   mat-card-title {
-    font-size: 1rem; /* Schriftgröße für Card-Titel weiter reduzieren */
+    font-size: 1rem;
   }
   .event-card img {
     max-height: 120px;
-    object-fit: cover;
   }
 }
 
@@ -156,7 +234,7 @@ footer {
 }
 
 footer nav a {
-  color: darkgreen;
+  color: #02C3A6;
   margin: 0 10px;
   text-decoration: none;
   font-size: 14px;
@@ -165,4 +243,3 @@ footer nav a {
 footer nav a:hover {
   text-decoration: none;
 }
-

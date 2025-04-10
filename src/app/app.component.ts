@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonModule } from '@angular/common';
-import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
-import {MatIcon} from '@angular/material/icon';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,18 +12,18 @@ import {RouterLink, RouterOutlet} from '@angular/router';
   imports: [CommonModule, MatCard, MatCardTitle, MatCardContent, MatIcon],
 })
 export class AppComponent implements OnInit {
-  events: { title: string; date: string ; link: string; location: string}[] = [];
+  events: { title: string; date: string; link: string; location: string; description: string }[] = [];
   apiKey = 'AIzaSyDEDBJrAjmclH7RH9HuR2ACrYi5eNKgMuc'; // Ersetze mit deinem API-Schlüssel
   calendarId = 'pbumunich@gmail.com'; // Ersetze mit deiner Kalender-ID
-
+  allCardsExpanded: boolean = false; // Neuer Zustand für alle Karten
 
   ngOnInit() {
     this.fetchCalendarEvents();
   }
 
   async fetchCalendarEvents() {
-    const timeMin = new Date().toISOString(); // Startzeit (aktuell)
-    const maxResults = 3; // Maximale Anzahl von Events
+    const timeMin = new Date().toISOString();
+    const maxResults = 3;
 
     const url = `https://www.googleapis.com/calendar/v3/calendars/${this.calendarId}/events?key=${this.apiKey}&timeMin=${timeMin}&maxResults=${maxResults}&orderBy=startTime&singleEvents=true`;
 
@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
           title: item.summary || 'No Title',
           date: new Date(item.start.dateTime || item.start.date).toLocaleString(),
           link: item.htmlLink,
-          location: item.location || 'No Location'
+          location: item.location || 'No Location',
+          description: item.description || 'Join us and see for yourself what it\'s all about ;)'
         }));
       } else {
         console.error('No events found in the calendar.');
@@ -47,15 +48,18 @@ export class AppComponent implements OnInit {
       this.events = [];
     }
   }
-  openInstagram() {
-    window.open('https://www.instagram.com/plantbasedunismunich/')
+
+  toggleAllCards(): void {
+    this.allCardsExpanded = !this.allCardsExpanded;
   }
-  openWhatsapp() {
-    window.open('https://chat.whatsapp.com/EoKqEEgcioFCaXjYuFenPq')
+
+  isCardExpanded(index: number): boolean {
+    return this.allCardsExpanded; // Gibt immer 'true' zurück, wenn 'allCardsExpanded' wahr ist
   }
   openPetition() {
-    window.open('https://forms.gle/UxDebthb46RHTagY6')
+    window.open('https://forms.gle/UxDebthb46RHTagY6');
   }
+
   getImageSrc(title: string): string {
     if (!title) {
       return 'assets/Default.png';
@@ -70,7 +74,7 @@ export class AppComponent implements OnInit {
     } else if (lowerTitle.includes('outreach')) {
       return 'Outreach.png';
     } else {
-      return 'Default.png';  // Standardbild, wenn keine Bedingung erfüllt ist
+      return 'Default.png';
     }
   }
 }
