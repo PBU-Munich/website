@@ -60,6 +60,10 @@ export class AppComponent implements OnInit {
     window.open('https://forms.gle/UxDebthb46RHTagY6');
   }
 
+  openSurvey() {
+    window.open('https://evasys.zv.tum.de/evasys/public/online/index/index?online_php=&p=uref25&ONLINEID=8840453568633346174860232291902637075836');
+  }
+
   getImageSrc(title: string): string {
     if (!title) {
       return 'assets/Default.png';

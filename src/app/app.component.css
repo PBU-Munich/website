@@ -47,6 +47,7 @@ body {
 }
 .profile-subtext {
   padding: 0 10px;
+  color: whitesmoke;
 }
 
 .profile-picture {
@@ -74,8 +75,28 @@ body {
   display: block;
 }
 
+.custom-button-bold {
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 4px solid #02C3A6;
+  background-color: transparent;
+  color: #02C3A6;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  box-shadow: 0 0 10px #02C3A6, 0 0 20px #02C3A6; /* brighter glow */
+  transition: all 0.3s ease;
+}
+
 @media screen and (min-width: 1000px) {
   .custom-button {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .custom-button-bold {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -83,6 +104,11 @@ body {
 }
 
 .custom-button:hover {
+  background-color: #02C3A6;
+  color: black;
+}
+
+.custom-button-bold:hover {
   background-color: #02C3A6;
   color: black;
 }
