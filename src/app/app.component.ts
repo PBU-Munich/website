@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';
-import { MatIcon } from '@angular/material/icon';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,7 +8,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [CommonModule, MatCard, MatCardTitle, MatCardContent, MatIcon],
+  imports: [CommonModule, MatCard, MatCardTitle, MatCardContent],
 })
 export class AppComponent implements OnInit {
   events: { title: string; date: string; link: string; location: string; description: string }[] = [];
@@ -64,6 +63,10 @@ export class AppComponent implements OnInit {
     window.open('https://evasys.zv.tum.de/evasys/public/online/index/index?online_php=&p=uref25&ONLINEID=8840453568633346174860232291902637075836');
   }
 
+  openSignup() {
+    window.open('https://forms.gle/XzvvMP7NjnsA1cxv7')
+  }
+
   getImageSrc(title: string): string {
     if (!title) {
       return 'assets/Default.png';
@@ -77,8 +80,11 @@ export class AppComponent implements OnInit {
       return 'MeetAndGreet.png';
     } else if (lowerTitle.includes('outreach')) {
       return 'Outreach.png';
+    } else if (lowerTitle.includes('camp')) {
+      return 'Camp.png';
     } else {
       return 'Default.png';
     }
   }
+
 }

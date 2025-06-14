@@ -17,7 +17,7 @@
     </div>
     <div class="buttons">
       <button class="custom-button-bold" (click)="openSurvey()">
-        What’s your take on our canteen food? Do the StuWerk survey
+        Do the StuWerk survey about your Mensa
       </button>
       <button class="custom-button" (click)="openPetition()">
         Sign our Petition
@@ -27,6 +27,10 @@
       <a href="https://chat.whatsapp.com/EoKqEEgcioFCaXjYuFenPq" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
+      <button class="join-us-button" (click)="openSignup()">
+        Join us
+        <i class="fas fa-user-plus"></i>
+      </button>
       <a href="https://www.instagram.com/plantbasedunismunich/" target="_blank">
         <i class="fa-brands fa-instagram"></i>
       </a>
@@ -34,21 +38,7 @@
   </div>
 
   <div class="events-container">
-    <h3 class="events-header">
-      <a
-        href="https://calendar.google.com/calendar/embed?src=pbumunich%40gmail.com&ctz=Europe%2FBerlin"
-        target="_blank"
-        class="events-link-text"
-      >
-        Upcoming Events
-      </a>
-      <a
-        href="https://calendar.google.com/calendar/ical/pbumunich%40gmail.com/public/basic.ics"
-        class="download-icon-link"
-      >
-        <mat-icon>download</mat-icon>
-      </a>
-    </h3>
+
     <div *ngIf="events.length > 0; else noEvents" class="event-cards-wrapper">
       <mat-card
         *ngFor="let event of events; let i = index"
@@ -62,7 +52,10 @@
           <p><strong>When:</strong> {{ event.date }}</p>
           <p *ngIf="event.location"><strong>Where:</strong> {{ event.location }}</p>
           <div *ngIf="isCardExpanded(i)">
-            <p><strong>What: </strong>{{ event.description }}</p>
+            <p>
+              <strong>What: </strong>
+              <span (click)="$event.stopPropagation()" [innerHTML]="event.description"></span>
+            </p>
           </div>
         </mat-card-content>
       </mat-card>
