@@ -63,29 +63,7 @@ body {
 
 }
 
-.join-us-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem; /* Equivalent to Tailwind's space-x-2 */
-  padding: 0.75rem 1.5rem;  /* Equivalent to Tailwind's py-3 px-6 */
-  font-weight: 600;         /* Equivalent to Tailwind's font-semibold */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* md shadow */
-  transition: all 0.3s ease-in-out; /* Smooth transition */
-  cursor: pointer;          /* Pointer cursor */
-  outline: none;            /* Remove default outline */
-  border: 2px solid #02C3A6;
-  background-color: transparent;
-  color: #02C3A6;
-  font-size: 16px;
-  border-radius: 10px;
-}
-.join-us-button i {
-  font-size: 1rem !important; /* Adjusted icon size to be smaller */
-}
 
-.join-us-button:hover i {
-  color: black !important;
-}
 
 .custom-button {
   font-weight: bold;
@@ -132,37 +110,19 @@ body {
   color: black;
 }
 
-.social-icons {
-  display: flex;
-  justify-content: center; /* Zentriert die Icons horizontal */
-  gap: 20px; /* Abstand zwischen den Icons erhöhen */
-  margin-top: 20px; /* Etwas mehr Abstand zum Petition-Button */
-  text-decoration: none; /* Entfernt Unterstreichung der Links */
+.custom-button i {
+  margin-left: 8px; /* Add some space between text and icon */
+  font-size: 1.5em; /* Makes the icon 1.5 times the size of the button's text */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
-.social-icons i { /* Selektiert die Font Awesome <i>-Tags */
-  font-size: 48px; /* Größere Icons */
-  color: #02C3A6; /* Standardfarbe der Icons (Plant-Based Universities Grün) */
-  transition: color 0.3s ease-in-out; /* Sanfter Farbwechsel für Hover-Effekt */
+.custom-button .fa-whatsapp {
+  color: #25d366; /* Official WhatsApp Green */
 }
 
-/* Optional: Spezifische Farben für die Icons */
-.social-icons a:nth-child(1) i { /* Erstes Icon (Whatsapp) */
-  color: #25D366; /* Whatsapp Grün */
+.custom-button .fa-instagram {
+  color: #c13584;
 }
-
-.social-icons a:nth-child(3) i { /* Zweites Icon (Instagram) */
-  color: #E4405F; /* Instagram Pink/Rot */
-}
-
-.social-icons a:nth-child(1):hover i { /* Hover für Whatsapp */
-  color: #128C7E; /* Dunkleres Whatsapp Grün */
-}
-
-.social-icons a:nth-child(3):hover i { /* Hover für Instagram */
-  color: #C13584; /* Dunkleres Instagram Pink */
-}
-
 /* Calendar Section */
 .events-header {
   display: flex;

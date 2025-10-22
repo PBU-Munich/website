@@ -58,14 +58,15 @@ export class AppComponent implements OnInit {
   openPetition() {
     window.open('https://forms.gle/UxDebthb46RHTagY6');
   }
-
-  openSurvey() {
-    window.open('https://evasys.zv.tum.de/evasys/public/online/index/index?online_php=&p=uref25&ONLINEID=8840453568633346174860232291902637075836');
-  }
-
   openSignup() {
     window.open('https://forms.gle/XzvvMP7NjnsA1cxv7')
   }
+  openWhatsapp(){
+    window.open("https://chat.whatsapp.com/LPgJhNCZi6o5JCybL6ulH4")
+    }
+ openInstagram() {
+   window.open('https://instagram.com/plantbasedunismunich')
+   }
 
   getImageSrc(title: string): string {
     if (!title) {
