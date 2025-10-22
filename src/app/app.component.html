@@ -1,49 +1,84 @@
 <div class="container">
   <div class="profile-section">
-    <img src="pbu_logo.png" alt="Profile Picture" class="profile-picture" height="886" width="886" />
+    <div class="profile-picture-section">
+      <img
+        src="pbu_logo.png"
+        alt="Profile Picture"
+        class="profile-picture"
+        height="886"
+        width="886"
+      />
+      <div class="profile-text">
+        <h2>Plant-Based Universities Munich</h2>
+      </div>
+    </div>
+    <div class="profile-subtext">
+      <h4>We are a student-led campaign driving for a future-oriented food system in our canteens.</h4>
+    </div>
     <div class="buttons">
+      <button class="custom-button" (click)="openSignup()">
+        Join our Club
+        <i class="fas fa-user-plus"></i>
+      </button>
       <button class="custom-button" (click)="openWhatsapp()">
-        Join our Whatsapp
+        Join our Whatsapp Community
+        <i class="fa-brands fa-whatsapp"></i>
       </button>
       <button class="custom-button" (click)="openInstagram()">
         Follow us on Instagram
-      </button>
-      <button class="custom-button" (click)="openPetition()">
-        Sign our Petition
+        <i class="fa-brands fa-instagram"></i>
       </button>
     </div>
   </div>
 
+  <div>
+    <p>E-Mail: pbumunich&#64;gmail.com</p>
+  </div>
+
   <div class="events-container">
-    <h3 class="events-header">
-      <a href="https://calendar.google.com/calendar/embed?src=pbumunich%40gmail.com&ctz=Europe%2FBerlin" target="_blank" class="events-link-text">Upcoming Events</a>
-      <a href="https://calendar.google.com/calendar/ical/pbumunich%40gmail.com/public/basic.ics" class="download-icon-link">
-        <mat-icon>download</mat-icon>
-      </a>
-    </h3>
     <div *ngIf="events.length > 0; else noEvents" class="event-cards-wrapper">
-      <a *ngFor="let event of events" [href]="event.link" target="_blank" class="event-card-link">
-        <mat-card class="event-card">
-          <mat-card-title>{{ event.title }}</mat-card-title>
-          <img mat-card-image [src]="getImageSrc(event.title)" alt="Event Image">
-          <mat-card-content>
-            <p><strong>When:</strong> {{ event.date }}</p>
-            <p *ngIf="event.location"><strong>Where:</strong> {{ event.location }}</p>
-          </mat-card-content>
-        </mat-card>
-      </a>
+      <mat-card
+        *ngFor="let event of events; let i = index"
+        class="event-card"
+        (click)="toggleAllCards()"
+        [class.expanded]="isCardExpanded(i)"
+      >
+        <mat-card-title>{{ event.title }}</mat-card-title>
+        <img mat-card-image [src]="getImageSrc(event.title)" alt="Event Image" />
+        <mat-card-content>
+          <p><strong>When:</strong> {{ event.date }}</p>
+          <p *ngIf="event.location"><strong>Where:</strong> {{ event.location }}</p>
+          <div *ngIf="isCardExpanded(i)">
+            <p>
+              <strong>What: </strong>
+              <span (click)="$event.stopPropagation()" [innerHTML]="event.description"></span>
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
     <ng-template #noEvents>
       <p>No upcoming events available.</p>
     </ng-template>
   </div>
+
+  <footer>
+    <nav>
+      <a
+        href="privacy-policy.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Privacy policy
+      </a>
+      |
+      <a href="imprint.html" target="_blank" rel="noopener noreferrer">
+        Legal notice
+      </a>
+      |
+      <a href="contact.html" target="_blank" rel="noopener noreferrer">
+        Contact
+      </a>
+    </nav>
+  </footer>
 </div>
-
-<footer>
-  <nav>
-    <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> |
-    <a href="imprint.html" target="_blank" rel="noopener noreferrer">Impressum</a>
-  </nav>
-</footer>
-
-
