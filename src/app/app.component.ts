@@ -55,8 +55,9 @@ export class AppComponent implements OnInit {
   isCardExpanded(index: number): boolean {
     return this.allCardsExpanded; // Gibt immer 'true' zurück, wenn 'allCardsExpanded' wahr ist
   }
-  openPetition() {
-    window.open('https://forms.gle/UxDebthb46RHTagY6');
+
+  openOpenLetter() {
+    window.open('https://forms.gle/Gx9b9hstoVsqPHGPA')
   }
   openSignup() {
     window.open('https://forms.gle/XzvvMP7NjnsA1cxv7')
@@ -87,5 +88,4 @@ export class AppComponent implements OnInit {
       return 'Default.png';
     }
   }
-
 }
